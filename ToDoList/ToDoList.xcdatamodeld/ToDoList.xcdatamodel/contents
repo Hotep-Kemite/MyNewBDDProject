@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Categorie" representedClassName="Categorie" syncable="YES" codeGenerationType="class">
+        <attribute name="categorie_date_creation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="categorie_date_mise_a_jour" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="categorie_nom" optional="YES" attributeType="String"/>
+        <relationship name="taches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="categorie" inverseEntity="Item"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
+        <attribute name="image_data" optional="YES" attributeType="URI"/>
+        <attribute name="image_date_creation" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image_date_mise_a_jour" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="tache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="image" inverseEntity="Item"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isChecked" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="uppercasedTitle" optional="YES" attributeType="String" derived="YES" derivationExpression="uppercase:(title)"/>
+        <relationship name="categorie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categorie" inverseName="taches" inverseEntity="Categorie"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="tache" inverseEntity="Image"/>
+    </entity>
+    <elements>
+        <element name="Item" positionX="-290.367919921875" positionY="55.0443115234375" width="105.77001953125" height="133"/>
+        <element name="Categorie" positionX="37.0784912109375" positionY="-103.6029052734375" width="128" height="103"/>
+        <element name="Image" positionX="137.963623046875" positionY="99.51556396484375" width="128" height="103"/>
+    </elements>
 </model>
